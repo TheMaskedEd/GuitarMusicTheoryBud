@@ -31,39 +31,35 @@ options =["standard",
         "drop d",
         "drop c",
         "B standard"]
+options1 =["standard",
+        "drop d",
+        "drop c",
+        "B standard"]
 
-def Button(func):
-   match func:
-      case "tune":
-         main.tunning(a1clicked.get())
-      case"tune":
-         main.tunning(a1clicked.get())
-      case "tune":
-         main.tunning(a1clicked.get())
-      case "tune":
-         main.tunning(a1clicked.get())
-      case "tune":
-         main.tunning(a1clicked.get())
-      case "tune":
-         main.tunning(a1clicked.get())
 
-#changes
-clicked = StringVar(root)
+def Tune():
+   main.tunning(a1clicked.get())
+
+def hellocallback():
+   print("hello")
+
+
+clicked = StringVar()
 clicked.set("null")
-a1clicked = StringVar(root)
+a1clicked = StringVar()
 a1clicked.set("standard")
-a1clicked1 = StringVar(root)
+a1clicked1 = StringVar()
 a1clicked1.set("A")
-a1clicked2 = StringVar(root)
+a1clicked2 = StringVar()
 a1clicked2.set("Major")
-a1clicked3 = StringVar(root)
+a1clicked3 = StringVar()
 a1clicked3.set("pick")
 
 a1_text = Label(a_frame, text = "Tuning")
 a1_text.grid(row=0, column=0, padx=5, pady=5)
 a1_Menu = OptionMenu(a_frame, a1clicked , *options)
 a1_Menu.grid(row=0, column=1, padx=5, pady=5)
-a1_Button = Button(a_frame, text ="enter", command=Button("tune"))
+a1_Button = Button(a_frame, text ="enter", command=Tune)
 a1_Button.grid(row=0, column=2, padx=5, pady=5)
 a1_text = Label(a_frame, text = "Scales")
 a1_text.grid(row=0, column=3, padx=5, pady=5)
@@ -71,13 +67,13 @@ a1_Menu1 = OptionMenu(a_frame, a1clicked1 , *options)
 a1_Menu1.grid(row=0, column=4, padx=5, pady=5)
 a1_Menu2 = OptionMenu(a_frame, a1clicked2 , *options)
 a1_Menu2.grid(row=0, column=5, padx=5, pady=5)
-a1_Button1 = Button(a_frame, text ="enter", command = Button("tune"))
+a1_Button1 = Button(a_frame, text ="enter", command = hellocallback)
 a1_Button1.grid(row=0, column=6, padx=5, pady=5)
 a1_text = Label(a_frame, text = "Ask Jeeves")
 a1_text.grid(row=0, column=7, padx=5, pady=5)
 a1_Menu3 = OptionMenu(a_frame, a1clicked3 , *options)
 a1_Menu3.grid(row=0, column=8, padx=5, pady=5)
-a1_Button2 = Button(a_frame, text ="enter", command = Button("tune"))
+a1_Button2 = Button(a_frame, text ="enter", command = hellocallback)
 a1_Button2.grid(row=0, column=9, padx=5, pady=5)
 
 
@@ -123,11 +119,11 @@ b2_Menu1 = OptionMenu(b2l_frame, clicked , *options)
 b2_Menu1.grid(row=1, column=1, padx=5, pady=5)
 
 
-c1_Button = Button(c_frame, text ="Arppegiate", command = Button("tune"))
+c1_Button = Button(c_frame, text ="Arppegiate", command = hellocallback)
 c1_Button.grid(row=0, column=0, padx=10, pady=5)
-c1_Button1 = Button(c_frame, text ="Scale Check", command = Button("tune"))
+c1_Button1 = Button(c_frame, text ="Scale Check", command = hellocallback)
 c1_Button1.grid(row=0, column=1, padx=10, pady=5)
-c1_Button2 = Button(c_frame, text ="Chord View", command = Button("tune"))
+c1_Button2 = Button(c_frame, text ="Chord View", command = hellocallback)
 c1_Button2.grid(row=0, column=2, padx=10, pady=5)
 
 

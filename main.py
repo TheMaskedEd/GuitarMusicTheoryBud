@@ -272,7 +272,7 @@ def chord():
     tunning1 = input(prompt)
     chord.append(tunning1)
     return chord
-
+#changes
 
 def tunning(tunning):
     tunnings = {

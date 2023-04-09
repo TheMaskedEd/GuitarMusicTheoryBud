@@ -47,7 +47,7 @@ def Button(func):
       case "tune":
          main.tunning(a1clicked.get())
 
-
+#changes
 clicked = StringVar(root)
 clicked.set("null")
 a1clicked = StringVar(root)

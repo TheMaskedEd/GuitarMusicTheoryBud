@@ -231,25 +231,25 @@ def arpeggiate():
     setkey(new)
 
 
-def main():
-    prompt = "Please select an option from menu"
-    func = input(prompt)
+#def main():
+ #   prompt = "Please select an option from menu"
+  #  func = input(prompt)
 
-    if func == "scales":
-        tunning()
-        scalekey()
-    elif func == "chord enter":
-        tunning()
-        chord()
-    elif func == "chord check":
-        tunning()
-        print(setchord())
-    elif func == "arp":
-        arpeggiate()
-    elif func == "jeeves":
-        print(jeeves())
-    else:
-        print("Command not recognised")
+   # if func == "scales":
+    #    tunning()
+     #   scalekey()
+   # elif func == "chord enter":
+    #    tunning()
+     #   chord()
+   # elif func == "chord check":
+    #    tunning()
+     #   print(setchord())
+    #elif func == "arp":
+     #   arpeggiate()
+    #elif func == "jeeves":
+     #   print(jeeves())
+    #else:
+     #   print("Command not recognised")
 
 def chord():
     chord = []
@@ -274,17 +274,15 @@ def chord():
     return chord
 
 
-def tunning():
+def tunning(tunning):
     tunnings = {
         "standard":['E','A','D','G','B','E'],
         "drop d":['D','A','D','G','B','E'],
         "drop c": ['C','G','C','F','A','D'],
         "B standard": ['B','E','A','D','F#','B'],
     }
-    prompt = "please select your tunning"
-    tunning = input(prompt)
-    print(tunnings[tunning])
     settunning(tunnings[tunning])
+    print(tunning)
     return(tunnings[tunning])
 
 def getnotes(key, intervals):
@@ -305,7 +303,7 @@ def jeeves():
     return(new_string)
 
 
-main()
+#main()
 
 
 

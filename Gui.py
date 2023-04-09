@@ -36,7 +36,7 @@ options1 =["standard",
         "drop c",
         "B standard"]
 
-
+#changes
 def Tune():
    main.tunning(a1clicked.get())
 

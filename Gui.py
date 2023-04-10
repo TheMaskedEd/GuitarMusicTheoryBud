@@ -39,10 +39,13 @@ options1 =["standard",
 #changes
 def Tune():
    main.tunning(a1clicked.get())
+def jeeves():
+   print(main.jeeves(a1clicked3.get()))
+def scale():
+    main.setkey(main.getnotes(a1clicked1.get(), a1clicked2.get()))
 
 def hellocallback():
-   print("hello")
-
+    print("hello this button is under construction")
 
 clicked = StringVar()
 clicked.set("null")
@@ -67,13 +70,13 @@ a1_Menu1 = OptionMenu(a_frame, a1clicked1 , *options)
 a1_Menu1.grid(row=0, column=4, padx=5, pady=5)
 a1_Menu2 = OptionMenu(a_frame, a1clicked2 , *options)
 a1_Menu2.grid(row=0, column=5, padx=5, pady=5)
-a1_Button1 = Button(a_frame, text ="enter", command = hellocallback)
+a1_Button1 = Button(a_frame, text ="enter", command = scale)
 a1_Button1.grid(row=0, column=6, padx=5, pady=5)
 a1_text = Label(a_frame, text = "Ask Jeeves")
 a1_text.grid(row=0, column=7, padx=5, pady=5)
 a1_Menu3 = OptionMenu(a_frame, a1clicked3 , *options)
 a1_Menu3.grid(row=0, column=8, padx=5, pady=5)
-a1_Button2 = Button(a_frame, text ="enter", command = hellocallback)
+a1_Button2 = Button(a_frame, text ="enter", command = jeeves)
 a1_Button2.grid(row=0, column=9, padx=5, pady=5)
 
 

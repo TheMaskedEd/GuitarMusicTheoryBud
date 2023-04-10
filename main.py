@@ -4,7 +4,7 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 scales = {
-    "major": [0, 2, 4, 5, 7, 9, 11],
+    "Major": [0, 2, 4, 5, 7, 9, 11],
     "minor": [0, 2, 3, 5, 7, 10, 11],
     "dorian": [0, 2, 3, 5, 7, 9, 10, 12],
     "phrygian": [0, 1, 3, 5, 7, 8, 10, 12],
@@ -100,6 +100,8 @@ def settunning(tune):
         o = o + 1
 
 def setkey(key):
+    print(key)
+
     i = 0
     for parts in string1:
         if string1[i] in key:
@@ -285,20 +287,22 @@ def tunning(tunning):
     print(tunning)
     return(tunnings[tunning])
 
-def getnotes(key, intervals):
+def getnotes(key, scale):
     root = notes.index(key)
+    intervals = scales[scale]
     octave = notes[root:root+13]
-    return [octave[i] for i in intervals]
+    temp = [octave[i] for i in intervals]
+    return temp
 
-def jeeves():
+def jeeves(term):
+    print(term)
     d ={}
     with open("Dictionary.txt") as f:
         for line in f:
             (key, val) = line.split()
             d[key] = val
-    print(d)
-    userinput = input("please enter a term")
-    string = d[userinput]
+    print(d[term])
+    string = d[term]
     new_string = string.replace("_"," ")
     return(new_string)
 

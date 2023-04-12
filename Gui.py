@@ -58,6 +58,7 @@ a1clicked2.set("Major")
 a1clicked3 = StringVar()
 a1clicked3.set("pick")
 
+#
 a1_text = Label(a_frame, text = "Tuning")
 a1_text.grid(row=0, column=0, padx=5, pady=5)
 a1_Menu = OptionMenu(a_frame, a1clicked , *options)

@@ -161,9 +161,8 @@ def scalekey():
 
     setkey(getnotes(key,scales[scale]))
 
-def setchord():
-    scalekey()
-    clist = chord()
+def scalecheck(chord):
+    clist = chord
     if clist[0] == 'x':
         pass
     elif string1[int(clist[0])] == '-':
@@ -190,15 +189,8 @@ def setchord():
         return False
     return True
 
-def arpeggiate():
-    tunning()
-    print(string6)
-    print(string5)
-    print(string4)
-    print(string3)
-    print(string2)
-    print(string1)
-    clist = chord()
+def Arpeggiate(chord):
+    clist = chord
     print(clist)
     cnotes = []
     if clist[0] == 'x':
@@ -253,27 +245,33 @@ def arpeggiate():
     #else:
      #   print("Command not recognised")
 
-def chord():
-    chord = []
-    prompt = "first note location on string 6"
-    tunning6 = input(prompt)
-    chord.append(tunning6)
-    prompt = "first note location on string 5"
-    tunning5 = input(prompt)
-    chord.append(tunning5)
-    prompt = "first note location on string 4"
-    tunning4 = input(prompt)
-    chord.append(tunning4)
-    prompt = "first note location on string 3"
-    tunning3 = input(prompt)
-    chord.append(tunning3)
-    prompt = "first note location on string 2"
-    tunning2 = input(prompt)
-    chord.append(tunning2)
-    prompt = "first note location on string 1"
-    tunning1 = input(prompt)
-    chord.append(tunning1)
-    return chord
+def chordcheck(chord):
+    clist = chord
+    if clist[0] == 'x':
+        pass
+    elif string1[int(clist[0])] == '-':
+        return False
+    if clist[1] == 'x':
+        pass
+    elif string2[int(clist[1])] == '-':
+        return False
+    if clist[2] == 'x':
+        pass
+    elif string3[int(clist[2])] == '-':
+        return False
+    if clist[3] == 'x':
+        pass
+    elif string4[int(clist[3])] == '-':
+        return False
+    if clist[4] == 'x':
+        pass
+    elif string5[int(clist[4])] == '-':
+        return False
+    if clist[5] == 'x':
+        pass
+    elif string6[int(clist[5])] == '-':
+        return False
+    return True
 #changes
 
 def tunning(tunning):
@@ -305,6 +303,64 @@ def jeeves(term):
     string = d[term]
     new_string = string.replace("_"," ")
     return(new_string)
+
+def ChordDict(root,type):
+    chord = str(root)+"_"+str(type)
+    d = {}
+    with open("Chords.txt") as f:
+        for line in f:
+            (key, val) = line.split()
+            d[key] = val
+    print(d)
+    print(chord)
+    chordnotes = d[chord].split(',')
+    print(chordnotes)
+    return chordnotes
+
+def chordView(chord):
+    clist = chord
+    for i in range(len(string1)):
+        if clist[0] == str(i):
+            pass
+        else:
+            string1[i] = "-"
+    for i in range(len(string2)):
+        if clist[1] == str(i):
+            pass
+        else:
+            string2[i] = "-"
+    for i in range(len(string3)):
+        if clist[2] == str(i):
+            pass
+        else:
+            string3[i] = "-"
+    for i in range(len(string4)):
+        if clist[3] == str(i):
+            pass
+        else:
+            string4[i] = "-"
+    for i in range(len(string5)):
+        if clist[4] == str(i):
+            pass
+        else:
+            string5[i] = "-"
+    for i in range(len(string6)):
+        if clist[5] == str(i):
+            pass
+        else:
+            string6[i] = "-"
+
+    print(string6)
+    print(string5)
+    print(string4)
+    print(string3)
+    print(string2)
+    print(string1)
+
+
+
+
+
 
 
 #main()

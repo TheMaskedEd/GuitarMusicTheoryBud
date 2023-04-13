@@ -5,7 +5,7 @@ import main
 from tkinter import *
 from PIL import ImageTk,Image
 
-
+#window settings
 root = Tk()
 root.title('Guitar app')
 root.maxsize(700, 350)

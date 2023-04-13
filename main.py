@@ -186,7 +186,7 @@ def scalecheck(chord):
         return False
     return True
 
-# function made to arpeggiate a chord over the fretboard
+# function made to arpeggiate a chord over the fretboard and display notes
 def Arpeggiate(chord):
     clist = chord
     print(clist)

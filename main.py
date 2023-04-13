@@ -3,8 +3,9 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
+#dictionary of scales and their integers
 scales = {
-    "Major": [0, 2, 4, 5, 7, 9, 11],
+    "major": [0, 2, 4, 5, 7, 9, 11],
     "minor": [0, 2, 3, 5, 7, 10, 11],
     "dorian": [0, 2, 3, 5, 7, 9, 10, 12],
     "phrygian": [0, 1, 3, 5, 7, 8, 10, 12],
@@ -24,12 +25,14 @@ string5 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
 string6 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
 notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B']*3
 
+# function to set tuning utilising for loops
 def settunning(tune):
     stringnote = tune
 
     i = 0
     o = 0
 
+    #loop that starts at a value and is ended at a value will soon be replaced
     for parts in string1:
         x = notes.index(stringnote[0])
         string1[o] = notes[i+x]
@@ -99,6 +102,7 @@ def settunning(tune):
             i = -x
         o = o + 1
 
+#uses for loops to setkey with notes generated from get notes
 def setkey(key):
     print(key)
 
@@ -152,15 +156,8 @@ def setkey(key):
     print(string2)
     print(string1)
 
-def scalekey():
 
-    prompt = "please select your scale"
-    scale = input(prompt)
-    prompt = "please select your key"
-    key = input(prompt)
-
-    setkey(getnotes(key,scales[scale]))
-
+#function using for loops to check wether a chord is in a scale
 def scalecheck(chord):
     clist = chord
     if clist[0] == 'x':
@@ -189,6 +186,7 @@ def scalecheck(chord):
         return False
     return True
 
+# function made to arpeggiate a chord over the fretboard
 def Arpeggiate(chord):
     clist = chord
     print(clist)
@@ -245,6 +243,7 @@ def Arpeggiate(chord):
     #else:
      #   print("Command not recognised")
 
+#Function to check whether chord is compatibilty
 def chordcheck(chord):
     clist = chord
     if clist[0] == 'x':
@@ -274,6 +273,7 @@ def chordcheck(chord):
     return True
 #change
 
+#dictionary of tuning
 def tunning(tunning):
     tunnings = {
         "standard":['E','A','D','G','B','E'],
@@ -285,6 +285,7 @@ def tunning(tunning):
     print(tunning)
     return(tunnings[tunning])
 
+#function that utilises intervals and octives to get notes for a scale
 def getnotes(key, scale):
     root = notes.index(key)
     intervals = scales[scale]
@@ -292,6 +293,7 @@ def getnotes(key, scale):
     temp = [octave[i] for i in intervals]
     return temp
 
+#basic dictionary with guitar terms stored on a dictionary.txt
 def jeeves(term):
     print(term)
     d ={}
@@ -304,6 +306,7 @@ def jeeves(term):
     new_string = string.replace("_"," ")
     return(new_string)
 
+#ChordDict basic chord dictionary stored on chord dictionary.txt
 def ChordDict(root,type):
     chord = str(root)+"_"+str(type)
     d = {}
@@ -317,6 +320,7 @@ def ChordDict(root,type):
     print(chordnotes)
     return chordnotes
 
+#displays selected chord on fretboard utilises for loops
 def chordView(chord):
     clist = chord
     for i in range(len(string1)):

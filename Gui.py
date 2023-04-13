@@ -11,22 +11,28 @@ root.title('Guitar app')
 root.maxsize(700, 350)
 root.config(bg="white")
 
+#row 1
 a_frame = Frame(root, width=650, height=50, bg='light grey')
 a_frame.grid(row=0, column=0, padx=10, pady=5)
 
+#guitar neck
 neck = Image.open("neck.png")
 image = ImageTk.PhotoImage(neck)
 
+#row 2
 f_frame = Label(root,image=image,borderwidth=0)
 f_frame.image = image
 f_frame.grid(row=1, column=0,padx=10, pady=10)
 
+#row 3
 b_frame = Frame(root, width=650, height=100, bg='grey')
 b_frame.grid(row=2, column=0, padx=10, pady=5)
 
+#row 4
 c_frame = Frame(root, width=650, height=50, bg='light grey')
 c_frame.grid(row=3, column=0, padx=10, pady=5)
 
+#option menus
 options =["standard",
         "drop d",
         "drop c",
@@ -59,6 +65,7 @@ options4 = ["major","minor"]
 
 
 #change
+#button functions are present here they are used so that when app is started they dont all activate at once
 def Tune():
    main.tunning(a1clicked.get())
 def jeeves():
@@ -91,6 +98,7 @@ def Cview():
 def hellocallback():
     print("hello this button is under construction")
 
+#dropdown sets and var holders for row 2
 clicked = StringVar()
 clicked.set("null")
 a1clicked = StringVar()
@@ -98,11 +106,11 @@ a1clicked.set("standard")
 a1clicked1 = StringVar()
 a1clicked1.set("A")
 a1clicked2 = StringVar()
-a1clicked2.set("Major")
+a1clicked2.set("major")
 a1clicked3 = StringVar()
 a1clicked3.set("pick")
 
-
+#string input sets and var holders for row 2
 b1str6 = StringVar()
 b1str6.set('')
 b1str5 = StringVar()
@@ -116,12 +124,13 @@ b1str2.set('')
 b1str1 = StringVar()
 b1str1.set('')
 
+#chord dictionary sets and var holders for row 3
 b2clicked = StringVar()
 b2clicked.set("Root")
 b2clicked1 = StringVar()
 b2clicked1.set("Type")
 
-
+#row 1 columss grids and other settings
 a1_text = Label(a_frame, text = "Tuning")
 a1_text.grid(row=0, column=0, padx=5, pady=5)
 a1_Menu = OptionMenu(a_frame, a1clicked , *options)
@@ -143,7 +152,7 @@ a1_Menu3.grid(row=0, column=8, padx=5, pady=5)
 a1_Button2 = Button(a_frame, text ="enter", command = jeeves)
 a1_Button2.grid(row=0, column=9, padx=5, pady=5)
 
-
+#row 2 columss grids and other settings
 b1l_frame = Frame(b_frame, width=200, height=70, bg='light grey')
 b1l_frame.grid(row=1, column=0, padx=5, pady=5)
 b1t_text = Label(b_frame, text = "Custom Chord")
@@ -187,9 +196,9 @@ b2_Menu1.grid(row=1, column=1, padx=5, pady=5)
 b2_Button = Button(b2l_frame, text ="set", command = Chorddict)
 b2_Button.grid(row=2, column=0, padx=10, pady=5)
 
-chordAry = [b1str6_input.get(),b1str5_input.get(),b1str4_input.get(),b1str3_input.get(),b1str2_input.get(),b1str1_input.get()]
 
 
+#row 3 columss grids and other settings
 c1_Button = Button(c_frame, text ="Arppegiate", command = Arp)
 c1_Button.grid(row=0, column=0, padx=10, pady=5)
 c1_Button1 = Button(c_frame, text ="Scale Check", command = Check)

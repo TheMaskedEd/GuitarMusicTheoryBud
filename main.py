@@ -272,7 +272,7 @@ def chordcheck(chord):
     elif string6[int(clist[5])] == '-':
         return False
     return True
-#changes
+#change
 
 def tunning(tunning):
     tunnings = {

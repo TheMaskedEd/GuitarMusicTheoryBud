@@ -58,7 +58,7 @@ options3 = ["pick"]
 options4 = ["major","minor"]
 
 
-#changes
+#change
 def Tune():
    main.tunning(a1clicked.get())
 def jeeves():

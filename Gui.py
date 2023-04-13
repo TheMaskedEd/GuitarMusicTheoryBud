@@ -8,7 +8,7 @@ from PIL import ImageTk,Image
 #window settings
 root = Tk()
 root.title('Guitar app')
-root.maxsize(700, 350)
+root.maxsize(700, 400)
 root.config(bg="white")
 
 #row 1
@@ -91,6 +91,14 @@ def Chorddict():
     b1str2.set(chord[4])
     b1str1.set(chord[5])
 
+def Chordcust():
+    b1str6.set(b1str6.get())
+    b1str5.set(b1str5.get())
+    b1str4.set(b1str4.get())
+    b1str3.set(b1str3.get())
+    b1str2.set(b1str2.get())
+    b1str1.set(b1str1.get())
+
 def Cview():
     chordAry = [b1str6_input.get(), b1str5_input.get(), b1str4_input.get(), b1str3_input.get(), b1str2_input.get(),
                 b1str1_input.get()]
@@ -135,16 +143,21 @@ a1_text = Label(a_frame, text = "Tuning")
 a1_text.grid(row=0, column=0, padx=5, pady=5)
 a1_Menu = OptionMenu(a_frame, a1clicked , *options)
 a1_Menu.grid(row=0, column=1, padx=5, pady=5)
+#enter button
 a1_Button = Button(a_frame, text ="enter", command=Tune)
 a1_Button.grid(row=0, column=2, padx=5, pady=5)
 a1_text = Label(a_frame, text = "Scales")
 a1_text.grid(row=0, column=3, padx=5, pady=5)
+#key
 a1_Menu1 = OptionMenu(a_frame, a1clicked1 , *options1)
 a1_Menu1.grid(row=0, column=4, padx=5, pady=5)
+#scale
 a1_Menu2 = OptionMenu(a_frame, a1clicked2 , *options2)
 a1_Menu2.grid(row=0, column=5, padx=5, pady=5)
+#enter button
 a1_Button1 = Button(a_frame, text ="enter", command = scale)
 a1_Button1.grid(row=0, column=6, padx=5, pady=5)
+#jeeves
 a1_text = Label(a_frame, text = "Ask Jeeves")
 a1_text.grid(row=0, column=7, padx=5, pady=5)
 a1_Menu3 = OptionMenu(a_frame, a1clicked3 , *options3)
@@ -155,6 +168,7 @@ a1_Button2.grid(row=0, column=9, padx=5, pady=5)
 #row 2 columss grids and other settings
 b1l_frame = Frame(b_frame, width=200, height=70, bg='light grey')
 b1l_frame.grid(row=1, column=0, padx=5, pady=5)
+#custom chord menu
 b1t_text = Label(b_frame, text = "Custom Chord")
 b1t_text.grid(row=0, column=0, padx=5, pady=5)
 b2l_frame = Frame(b_frame, width=200, height=70, bg='light grey')
@@ -185,6 +199,9 @@ b1str1_text = Label(b1l_frame, text = "string 1 Note")
 b1str1_text.grid(row=3, column=2, padx=5, pady=5)
 b1str1_input = Entry(b1l_frame,textvariable=  b1str1, width = 5)
 b1str1_input.grid(row=3, column=3, padx=5, pady=5)
+b2_Button = Button(b1l_frame, text ="set", command = Chordcust)
+b2_Button.grid(row=4, column=0, padx=10, pady=5)
+#chord dictionary
 b2_text = Label(b2l_frame, text = "Root Note")
 b2_text.grid(row=0, column=0, padx=5, pady=5)
 b2_Menu = OptionMenu(b2l_frame, b2clicked , *options1)

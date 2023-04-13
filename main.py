@@ -282,7 +282,7 @@ def tunning(tunning):
         "B standard": ['B','E','A','D','F#','B'],
     }
     settunning(tunnings[tunning])
-    print(tunning)
+    print(tunnings[tunning])
     return(tunnings[tunning])
 
 #function that utilises intervals and octives to get notes for a scale
@@ -301,7 +301,6 @@ def jeeves(term):
         for line in f:
             (key, val) = line.split()
             d[key] = val
-    print(d[term])
     string = d[term]
     new_string = string.replace("_"," ")
     return(new_string)

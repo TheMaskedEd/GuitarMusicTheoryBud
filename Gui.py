@@ -1,6 +1,6 @@
 #The following code uses tkinter and PILLOW modules
 #install guide to pillow https://pillow.readthedocs.io/en/stable/installation.html
-
+import Plot
 import main
 from tkinter import *
 from PIL import ImageTk,Image
@@ -15,15 +15,6 @@ root.config(bg="white")
 a_frame = Frame(root, width=650, height=50, bg='light grey')
 a_frame.grid(row=0, column=0, padx=10, pady=5)
 
-#guitar neck
-neck = Image.open("neck.png")
-image = ImageTk.PhotoImage(neck)
-
-#row 2
-f_frame = Label(root,image=image,borderwidth=0)
-f_frame.image = image
-f_frame.grid(row=1, column=0,padx=10, pady=10)
-
 #row 3
 b_frame = Frame(root, width=650, height=100, bg='grey')
 b_frame.grid(row=2, column=0, padx=10, pady=5)
@@ -33,10 +24,7 @@ c_frame = Frame(root, width=650, height=50, bg='light grey')
 c_frame.grid(row=3, column=0, padx=10, pady=5)
 
 #option menus
-options =["standard",
-        "drop d",
-        "drop c",
-        "B standard"]
+options =["standard"]
 options1 = ['C',
             'C#',
             'D',
@@ -63,16 +51,22 @@ options2 =["major",
 options3 = ["pick"]
 options4 = ["major","minor"]
 
-
 #change
 #button functions are present here they are used so that when app is started they dont all activate at once
-def Tune():
+
+def viewAll():
    main.tunning(a1clicked.get())
+   Plot.plot()
 def jeeves():
-   print(main.jeeves(a1clicked3.get()))
+    top = Toplevel(root)
+    top.title(a1clicked3.get())
+    top_text = Label(top, text=main.jeeves(a1clicked3.get()))
+    top_text.grid(row=0, column=0, padx=5, pady=5)
 def scale():
+    main.tunning(a1clicked.get())
     main.setkey(main.getnotes(a1clicked1.get(), a1clicked2.get()))
 def Arp():
+    main.tunning(a1clicked.get())
     chordAry = [b1str6_input.get(), b1str5_input.get(), b1str4_input.get(), b1str3_input.get(), b1str2_input.get(),
                 b1str1_input.get()]
     print(chordAry)
@@ -81,7 +75,12 @@ def Check():
     chordAry = [b1str6_input.get(), b1str5_input.get(), b1str4_input.get(), b1str3_input.get(), b1str2_input.get(),
                 b1str1_input.get()]
 
-    print(main.scalecheck(chordAry))
+    ourtext = (str(main.scalecheck(chordAry)))
+
+    top = Toplevel(root)
+    top.title("does the following chord pass..?")
+    top_text = Label(top, text=ourtext)
+    top_text.grid(row=0, column=0, padx=5, pady=5)
 def Chorddict():
     chord =(main.ChordDict(b2clicked.get(),b2clicked1.get()))
     b1str6.set(chord[0])
@@ -144,8 +143,6 @@ a1_text.grid(row=0, column=0, padx=5, pady=5)
 a1_Menu = OptionMenu(a_frame, a1clicked , *options)
 a1_Menu.grid(row=0, column=1, padx=5, pady=5)
 #enter button
-a1_Button = Button(a_frame, text ="enter", command=Tune)
-a1_Button.grid(row=0, column=2, padx=5, pady=5)
 a1_text = Label(a_frame, text = "Scales")
 a1_text.grid(row=0, column=3, padx=5, pady=5)
 #key
@@ -222,6 +219,9 @@ c1_Button1 = Button(c_frame, text ="Scale Check", command = Check)
 c1_Button1.grid(row=0, column=1, padx=10, pady=5)
 c1_Button2 = Button(c_frame, text ="Chord View", command = Cview)
 c1_Button2.grid(row=0, column=2, padx=10, pady=5)
+c1_Button2 = Button(c_frame, text ="View all notes", command = viewAll)
+c1_Button2.grid(row=0, column=3, padx=10, pady=5)
+
 
 
 root.mainloop()

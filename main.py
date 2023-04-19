@@ -1,5 +1,5 @@
+import Plot
 # This is a sample Python script.
-
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
@@ -103,6 +103,7 @@ def settunning(tune):
         o = o + 1
 
 #uses for loops to setkey with notes generated from get notes
+
 def setkey(key):
     print(key)
 
@@ -111,50 +112,45 @@ def setkey(key):
         if string1[i] in key:
             pass
         else:
-            string1[i] = '-'
+            string1[i] = ' '
         i = i + 1
     i = 0
     for parts in string2:
         if string2[i] in key:
             pass
         else:
-            string2[i] = '-'
+            string2[i] = ' '
         i = i + 1
     i = 0
     for parts in string3:
         if string3[i] in key:
             pass
         else:
-            string3[i] = '-'
+            string3[i] = ' '
         i = i + 1
     i = 0
     for parts in string4:
         if string4[i] in key:
             pass
         else:
-            string4[i] = '-'
+            string4[i] = ' '
         i = i + 1
     i = 0
     for parts in string5:
         if string5[i] in key:
             pass
         else:
-            string5[i] = '-'
+            string5[i] = ' '
         i = i + 1
     i = 0
     for parts in string6:
         if string6[i] in key:
             pass
         else:
-            string6[i] = '-'
+            string6[i] = ' '
         i = i + 1
 
-    print(string6)
-    print(string5)
-    print(string4)
-    print(string3)
-    print(string2)
-    print(string1)
+    Plot.plot()
 
 
 #function using for loops to check wether a chord is in a scale
@@ -162,27 +158,27 @@ def scalecheck(chord):
     clist = chord
     if clist[0] == 'x':
         pass
-    elif string1[int(clist[0])] == '-':
+    elif string1[int(clist[0])] == ' ':
         return False
     if clist[1] == 'x':
         pass
-    elif string2[int(clist[1])] == '-':
+    elif string2[int(clist[1])] == ' ':
         return False
     if clist[2] == 'x':
         pass
-    elif string3[int(clist[2])] == '-':
+    elif string3[int(clist[2])] == ' ':
         return False
     if clist[3] == 'x':
         pass
-    elif string4[int(clist[3])] == '-':
+    elif string4[int(clist[3])] == ' ':
         return False
     if clist[4] == 'x':
         pass
-    elif string5[int(clist[4])] == '-':
+    elif string5[int(clist[4])] == ' ':
         return False
     if clist[5] == 'x':
         pass
-    elif string6[int(clist[5])] == '-':
+    elif string6[int(clist[5])] == ' ':
         return False
     return True
 
@@ -277,9 +273,6 @@ def chordcheck(chord):
 def tunning(tunning):
     tunnings = {
         "standard":['E','A','D','G','B','E'],
-        "drop d":['D','A','D','G','B','E'],
-        "drop c": ['C','G','C','F','A','D'],
-        "B standard": ['B','E','A','D','F#','B'],
     }
     settunning(tunnings[tunning])
     print(tunnings[tunning])
@@ -326,39 +319,34 @@ def chordView(chord):
         if clist[0] == str(i):
             pass
         else:
-            string1[i] = "-"
+            string1[i] = " "
     for i in range(len(string2)):
         if clist[1] == str(i):
             pass
         else:
-            string2[i] = "-"
+            string2[i] = " "
     for i in range(len(string3)):
         if clist[2] == str(i):
             pass
         else:
-            string3[i] = "-"
+            string3[i] = " "
     for i in range(len(string4)):
         if clist[3] == str(i):
             pass
         else:
-            string4[i] = "-"
+            string4[i] = " "
     for i in range(len(string5)):
         if clist[4] == str(i):
             pass
         else:
-            string5[i] = "-"
+            string5[i] = " "
     for i in range(len(string6)):
         if clist[5] == str(i):
             pass
         else:
-            string6[i] = "-"
+            string6[i] = " "
 
-    print(string6)
-    print(string5)
-    print(string4)
-    print(string3)
-    print(string2)
-    print(string1)
+    Plot.plot()
 
 
 

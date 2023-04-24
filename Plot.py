@@ -25,8 +25,8 @@ def plot():
     # setting height and width of displayed guitar
     ax.set_xlim([0, 13])
     ax.set_ylim([0.4, 6.5])
-    # setting color of the background using argument night
 
+    # setting the circle properties
     circleRadius = 0.2
     circleColour = 'red'
     for string_num, string in enumerate(fretboard):

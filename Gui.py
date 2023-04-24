@@ -2,8 +2,10 @@
 #install guide to pillow https://pillow.readthedocs.io/en/stable/installation.html
 import Plot
 import main
+from etcClass import Extra
+from chordClass import Chords
 from tkinter import *
-from PIL import ImageTk,Image
+
 
 #window settings
 root = Tk()
@@ -55,34 +57,34 @@ options4 = ["major","minor"]
 #button functions are present here they are used so that when app is started they dont all activate at once
 
 def viewAll():
-   main.tunning(a1clicked.get())
+   Extra.tunning(a1clicked.get())
    Plot.plot()
 def jeeves():
     top = Toplevel(root)
     top.title(a1clicked3.get())
-    top_text = Label(top, text=main.jeeves(a1clicked3.get()))
+    top_text = Label(top, text=Extra.jeeves(a1clicked3.get()))
     top_text.grid(row=0, column=0, padx=5, pady=5)
 def scale():
-    main.tunning(a1clicked.get())
-    main.setkey(main.getnotes(a1clicked1.get(), a1clicked2.get()))
+    Extra.tunning(a1clicked.get())
+    Extra.setkey(main.getnotes(a1clicked1.get(), a1clicked2.get()))
 def Arp():
-    main.tunning(a1clicked.get())
+    Extra.tunning(a1clicked.get())
     chordAry = [b1str6_input.get(), b1str5_input.get(), b1str4_input.get(), b1str3_input.get(), b1str2_input.get(),
                 b1str1_input.get()]
     print(chordAry)
-    main.Arpeggiate(chordAry)
+    Chords.Arpeggiate(chordAry)
 def Check():
     chordAry = [b1str6_input.get(), b1str5_input.get(), b1str4_input.get(), b1str3_input.get(), b1str2_input.get(),
                 b1str1_input.get()]
 
-    ourtext = (str(main.scalecheck(chordAry)))
+    ourtext = (str(Chords.scalecheck(chordAry)))
 
     top = Toplevel(root)
     top.title("does the following chord pass..?")
     top_text = Label(top, text=ourtext)
     top_text.grid(row=0, column=0, padx=5, pady=5)
 def Chorddict():
-    chord =(main.ChordDict(b2clicked.get(),b2clicked1.get()))
+    chord =(Chords.ChordDict(b2clicked.get(),b2clicked1.get()))
     b1str6.set(chord[0])
     b1str5.set(chord[1])
     b1str4.set(chord[2])
@@ -99,9 +101,10 @@ def Chordcust():
     b1str1.set(b1str1.get())
 
 def Cview():
+    Extra.tunning(a1clicked.get())
     chordAry = [b1str6_input.get(), b1str5_input.get(), b1str4_input.get(), b1str3_input.get(), b1str2_input.get(),
                 b1str1_input.get()]
-    main.chordView(chordAry)
+    Chords.chordView(chordAry)
 def hellocallback():
     print("hello this button is under construction")
 

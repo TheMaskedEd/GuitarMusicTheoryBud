@@ -50,7 +50,7 @@ options2 =["major",
         "minor blues",
         "locrian",
         "lydian"]
-options3 = ["pick"]
+options3 = ["Notes","Chord","Intervals","Scale","Arpeggio","Tunning","String","Fret","Fretboard"]
 options4 = ["major","minor"]
 
 #change
@@ -58,6 +58,7 @@ options4 = ["major","minor"]
 
 def viewAll():
    Extra.tunning(a1clicked.get())
+   # Plots all notes on a fretbaord
    Plot.plot()
 def jeeves():
     top = Toplevel(root)
@@ -118,7 +119,7 @@ a1clicked1.set("A")
 a1clicked2 = StringVar()
 a1clicked2.set("major")
 a1clicked3 = StringVar()
-a1clicked3.set("pick")
+a1clicked3.set("Notes")
 
 #string input sets and var holders for row 2
 b1str6 = StringVar()

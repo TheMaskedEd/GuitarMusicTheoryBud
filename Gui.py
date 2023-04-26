@@ -66,7 +66,7 @@ def jeeves():
     top_text.grid(row=0, column=0, padx=5, pady=5)
 def scale():
     Extra.tunning(a1clicked.get())
-    Extra.setkey(main.getnotes(a1clicked1.get(), a1clicked2.get()))
+    Extra.setkey(Extra.getnotes(a1clicked1.get(), a1clicked2.get()))
 def Arp():
     Extra.tunning(a1clicked.get())
     chordAry = [b1str6_input.get(), b1str5_input.get(), b1str4_input.get(), b1str3_input.get(), b1str2_input.get(),

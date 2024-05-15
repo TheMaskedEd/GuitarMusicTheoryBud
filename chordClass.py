@@ -1,9 +1,9 @@
 import Plot
 import main
 
-class Chords():
+class chords():
 
-    def scalecheck(chord):
+    def scaleCheck(chord):
         clist = chord
         #The function checks if the first character of the clist variable is 'x',
         # which would indicate a muted string, and does nothing if it is.
@@ -40,7 +40,7 @@ class Chords():
         # If the functions reaches all the way to the end without hitting False then
         # it will indicate that the chord does fit within the scale thus returning True
         return True
-    def Arpeggiate(chord):
+    def arpeggiate(chord):
         clist = chord
         print(clist)
         cnotes = []
@@ -78,11 +78,11 @@ class Chords():
         new = []
         [new.append(x) for x in cnotes if x not in new]
         print(new)
-        from etcClass import Extra
-        Extra.setkey(new)
+        from etcClass import extra
+        extra.setkey(new)
 
     # ChordDict basic chord dictionary stored on chord dictionary.txt
-    def ChordDict(root, type):
+    def chordDict(root, type):
         chord = str(root) + "_" + str(type)
         d = {}
         #opens the file "Chords.txt" using the with statement and assigns it to the variable f.

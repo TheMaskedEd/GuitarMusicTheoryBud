@@ -1,9 +1,7 @@
-#The following code uses tkinter and PILLOW modules
-#install guide to pillow https://pillow.readthedocs.io/en/stable/installation.html
+#The following code uses tkinter
 import Plot
-import main
-from etcClass import Extra
-from chordClass import Chords
+from etcClass import extra
+from chordClass import chords
 from tkinter import *
 
 
@@ -57,35 +55,35 @@ options4 = ["major","minor"]
 #button functions are present here they are used so that when app is started they dont all activate at once
 
 def viewAll():
-   Extra.tunning(a1clicked.get())
+   extra.tunning(a1clicked.get())
    # Plots all notes on a fretbaord
    Plot.plot()
 def jeeves():
     top = Toplevel(root)
     top.title(a1clicked3.get())
-    top_text = Label(top, text=Extra.jeeves(a1clicked3.get()))
+    top_text = Label(top, text=extra.jeeves(a1clicked3.get()))
     top_text.grid(row=0, column=0, padx=5, pady=5)
 def scale():
-    Extra.tunning(a1clicked.get())
-    Extra.setkey(Extra.getnotes(a1clicked1.get(), a1clicked2.get()))
-def Arp():
-    Extra.tunning(a1clicked.get())
+    extra.tunning(a1clicked.get())
+    extra.setkey(extra.getnotes(a1clicked1.get(), a1clicked2.get()))
+def arp():
+    extra.tunning(a1clicked.get())
     chordAry = [b1str6_input.get(), b1str5_input.get(), b1str4_input.get(), b1str3_input.get(), b1str2_input.get(),
                 b1str1_input.get()]
     print(chordAry)
-    Chords.Arpeggiate(chordAry)
-def Check():
+    chords.arpeggiate(chordAry)
+def check():
     chordAry = [b1str6_input.get(), b1str5_input.get(), b1str4_input.get(), b1str3_input.get(), b1str2_input.get(),
                 b1str1_input.get()]
 
-    ourtext = (str(Chords.scalecheck(chordAry)))
+    ourtext = (str(chords.scaleCheck(chordAry)))
 
     top = Toplevel(root)
     top.title("does the following chord pass..?")
     top_text = Label(top, text=ourtext)
     top_text.grid(row=0, column=0, padx=5, pady=5)
-def Chorddict():
-    chord =(Chords.ChordDict(b2clicked.get(),b2clicked1.get()))
+def chordDict():
+    chord =(chords.chordDict(b2clicked.get(),b2clicked1.get()))
     b1str6.set(chord[0])
     b1str5.set(chord[1])
     b1str4.set(chord[2])
@@ -93,7 +91,7 @@ def Chorddict():
     b1str2.set(chord[4])
     b1str1.set(chord[5])
 
-def Chordcust():
+def chordCust():
     b1str6.set(b1str6.get())
     b1str5.set(b1str5.get())
     b1str4.set(b1str4.get())
@@ -101,13 +99,11 @@ def Chordcust():
     b1str2.set(b1str2.get())
     b1str1.set(b1str1.get())
 
-def Cview():
-    Extra.tunning(a1clicked.get())
+def cView():
+    extra.tunning(a1clicked.get())
     chordAry = [b1str6_input.get(), b1str5_input.get(), b1str4_input.get(), b1str3_input.get(), b1str2_input.get(),
                 b1str1_input.get()]
-    Chords.chordView(chordAry)
-def hellocallback():
-    print("hello this button is under construction")
+    chords.chordView(chordAry)
 
 #dropdown sets and var holders for row 2
 clicked = StringVar()
@@ -200,7 +196,7 @@ b1str1_text = Label(b1l_frame, text = "string 1 Note")
 b1str1_text.grid(row=3, column=2, padx=5, pady=5)
 b1str1_input = Entry(b1l_frame,textvariable=  b1str1, width = 5)
 b1str1_input.grid(row=3, column=3, padx=5, pady=5)
-b2_Button = Button(b1l_frame, text ="set", command = Chordcust)
+b2_Button = Button(b1l_frame, text ="set custom chord", command = chordCust)
 b2_Button.grid(row=4, column=0, padx=10, pady=5)
 #chord dictionary
 b2_text = Label(b2l_frame, text = "Root Note")
@@ -211,17 +207,17 @@ b2_text1 = Label(b2l_frame, text = "Chord type")
 b2_text1.grid(row=1, column=0, padx=5, pady=5)
 b2_Menu1 = OptionMenu(b2l_frame, b2clicked1 , *options4)
 b2_Menu1.grid(row=1, column=1, padx=5, pady=5)
-b2_Button = Button(b2l_frame, text ="set", command = Chorddict)
+b2_Button = Button(b2l_frame, text ="set menu chord", command = chordDict)
 b2_Button.grid(row=2, column=0, padx=10, pady=5)
 
 
 
 #row 3 columss grids and other settings
-c1_Button = Button(c_frame, text ="Arppegiate", command = Arp)
+c1_Button = Button(c_frame, text ="Arppegiate", command = arp)
 c1_Button.grid(row=0, column=0, padx=10, pady=5)
-c1_Button1 = Button(c_frame, text ="Scale Check", command = Check)
+c1_Button1 = Button(c_frame, text ="Scale Check", command = check)
 c1_Button1.grid(row=0, column=1, padx=10, pady=5)
-c1_Button2 = Button(c_frame, text ="Chord View", command = Cview)
+c1_Button2 = Button(c_frame, text ="Chord View", command = cView)
 c1_Button2.grid(row=0, column=2, padx=10, pady=5)
 c1_Button2 = Button(c_frame, text ="View all notes", command = viewAll)
 c1_Button2.grid(row=0, column=3, padx=10, pady=5)

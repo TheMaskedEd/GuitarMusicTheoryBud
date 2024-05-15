@@ -5,8 +5,8 @@ F_major 1,3,3,2,1,1
 G_major 3,2,0,0,0,3
 A_major x,0,2,2,2,0
 B_major x,2,4,4,4,2
-C#_major x,4,3,1,2,1
-D#_major x,x,1,3,4,3
+C#_major x,4,6,6,6,4
+D#_major x,6,8,8,8,6
 F#_major 2,4,4,3,2,2
 G#_major 4,6,6,5,4,4
 A#_major x,1,3,3,3,1
@@ -17,3 +17,8 @@ F_minor 1,3,3,1,1,1
 G_minor 2,4,4,2,2,2
 A_minor x,0,2,2,1,0
 B_minor x,2,4,4,3,2
+C#_minor x,4,6,6,5,4
+D#_minor x,6,8,8,7,6
+F#_minor 2,4,4,2,2,2
+G#_minor 4,6,6,4,4,4
+A#_minor x,1,3,3,2,1

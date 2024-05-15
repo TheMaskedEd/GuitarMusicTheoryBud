@@ -1,9 +1,8 @@
-import Plot
 import main
 
 class chords():
 
-    def scaleCheck(chord):
+    def scaleCheck(self, chord):
         clist = chord
         #The function checks if the first character of the clist variable is 'x',
         # which would indicate a muted string, and does nothing if it is.
@@ -40,7 +39,7 @@ class chords():
         # If the functions reaches all the way to the end without hitting False then
         # it will indicate that the chord does fit within the scale thus returning True
         return True
-    def arpeggiate(chord):
+    def arpeggiate(self, chord):
         clist = chord
         print(clist)
         cnotes = []
@@ -77,12 +76,10 @@ class chords():
 
         new = []
         [new.append(x) for x in cnotes if x not in new]
-        print(new)
-        from etcClass import extra
-        extra.setkey(new)
+        return new
 
     # ChordDict basic chord dictionary stored on chord dictionary.txt
-    def chordDict(root, type):
+    def chordDict(self, root, type):
         chord = str(root) + "_" + str(type)
         d = {}
         #opens the file "Chords.txt" using the with statement and assigns it to the variable f.
@@ -97,12 +94,11 @@ class chords():
         print(chord)
         #Splits our value and creates an Array Chordnotes
         chordnotes = d[chord].split(',')
-        print(chordnotes)
         return chordnotes
 
 
 # displays selected chord on fretboard utilises for loops
-    def chordView(chord):
+    def chordView(self, chord):
         clist = chord
         #Loop over the indices of main.string1
         for i in range(len(main.string1)):
@@ -139,5 +135,3 @@ class chords():
                 pass
             else:
                 main.string6[i] = " "
-
-        Plot.plot()

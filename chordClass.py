@@ -4,76 +4,63 @@ class chords():
 
     def scaleCheck(self, chord):
         clist = chord
-        #The function checks if the first character of the clist variable is 'x',
-        # which would indicate a muted string, and does nothing if it is.
-        if clist[0] == 'x':
-            pass
-        #If the corresponding note on the first string is a space,
-        # which would indicate that it is not a valid note in the current scale.
-        elif main.string1[int(clist[0])] == ' ':
-            #return false to the user
-            return False
 
-        # The same process is repeated for main.string2 through main.string6.
-        if clist[1] == 'x':
-            pass
-        elif main.string2[int(clist[1])] == ' ':
-            return False
-        if clist[2] == 'x':
-            pass
-        elif main.string3[int(clist[2])] == ' ':
-            return False
-        if clist[3] == 'x':
-            pass
-        elif main.string4[int(clist[3])] == ' ':
-            return False
-        if clist[4] == 'x':
-            pass
-        elif main.string5[int(clist[4])] == ' ':
-            return False
-        if clist[5] == 'x':
-            pass
-        elif main.string6[int(clist[5])] == ' ':
-            return False
+        # List of all strings
+        strings = [main.string1, main.string2, main.string3, main.string4, main.string5, main.string6]
 
-        # If the functions reaches all the way to the end without hitting False then
+        # Iterate over each string
+        for string_index, string in enumerate(strings):
+            # If the note is 'x', continue to the next string
+            if clist[string_index] == 'x':
+                continue
+            # If the note is not in the scale, return False
+            elif string[int(clist[string_index])] == ' ':
+                return False
+
+        # If the function reaches all the way to the end without hitting False,
         # it will indicate that the chord does fit within the scale thus returning True
         return True
-    def arpeggiate(self, chord):
-        clist = chord
-        print(clist)
+
+    def arpeggioMaker(self, chord):
+        print(chord)
+
+        # List of all strings
+        strings = [main.string1, main.string2, main.string3, main.string4, main.string5, main.string6]
+
         cnotes = []
-        # The function checks if the first character of the clist variable is 'x',
-        # which would indicate a muted string, and does nothing if it is.
-        if clist[0] == 'x':
-            pass
-        #if there is a note, append the note at the index of the first element of clist in main.string1 to cnotes.
-        else:
-            cnotes.append(main.string1[int(clist[0])])
 
-        # The same process is repeated for main.string2 through main.string6.
-        if clist[1] == 'x':
-            pass
-        else:
-            cnotes.append(main.string2[int(clist[1])])
-        if clist[2] == 'x':
-            pass
-        else:
-            cnotes.append(main.string3[int(clist[2])])
-        if clist[3] == 'x':
-            pass
-        else:
-            cnotes.append(main.string4[int(clist[3])])
-        if clist[4] == 'x':
-            pass
-        else:
-            cnotes.append(main.string5[int(clist[4])])
-        if clist[5] == 'x':
-            pass
-        else:
-            cnotes.append(main.string6[int(clist[5])])
-            print(cnotes)
+        # Iterate over each string
+        for string_index, string in enumerate(strings):
+            # If the note is 'x', continue to the next string
+            if chord[string_index] == 'x':
+                continue
+            # If there is a note, append the note at the index of the current element of chord in the current string to cnotes
+            else:
+                cnotes.append(string[int(chord[string_index])])
 
+        # Remove duplicates from cnotes
+        new = []
+        [new.append(x) for x in cnotes if x not in new]
+        return new
+
+    def arpeggiate(self, chord):
+        print(chord)
+
+        # List of all strings
+        strings = [main.string1, main.string2, main.string3, main.string4, main.string5, main.string6]
+
+        cnotes = []
+
+        # Iterate over each string
+        for string_index, string in enumerate(strings):
+            # If the note is 'x', continue to the next string
+            if chord[string_index] == 'x':
+                continue
+            # If there is a note, append the note at the index of the current element of chord in the current string to cnotes
+            else:
+                cnotes.append(string[int(chord[string_index])])
+
+        # Remove duplicates from cnotes
         new = []
         [new.append(x) for x in cnotes if x not in new]
         return new
@@ -90,8 +77,47 @@ class chords():
                 (key, val) = line.split()
                 #Add the key-value pair to the dictionary d.
                 d[key] = val
-        print(d)
-        print(chord)
+        #Splits our value and creates an Array Chordnotes
+        chordnotes = d[chord].split(',')
+        return chordnotes
+
+    def chordDict2(self, root, type):
+        chords = {
+            "F Major": [0, 4, 7],
+            "F Minor": [0, 3, 7],
+            "F Diminished": [0, 3, 6],
+            "F Augmented": [0, 4, 8],
+            "F Major 7th": [0, 4, 7, 11],
+            "F Minor 7th": [0, 3, 7, 10],
+            "F7": [0, 4, 7, 10],
+            "F Diminished 7th": [0, 3, 6, 9],
+            "F Augmented 7th": [0, 4, 8, 11],
+            "Fsus2": [0, 2, 7],
+            "Fsus4": [0, 5, 7],
+            "Fadd9": [0, 4, 7, 14],
+            "F6": [0, 4, 7, 9],
+            "Fm6": [0, 3, 7, 9],
+            "F9": [0, 4, 7, 10, 14],
+            "Fm9": [0, 3, 7, 10, 14],
+            "F11": [0, 4, 7, 10, 14, 17],
+            "Fm11": [0, 3, 7, 10, 14, 17],
+            "F13": [0, 4, 7, 10, 14, 17, 21],
+            "Fm13": [0, 3, 7, 10, 14, 17, 21]
+        }
+
+        print(chords)
+
+    def chordmaker(self, root, type):
+        chord = str(root) + "_" + str(type)
+        d = {}
+        #opens the file "Chords.txt" using the with statement and assigns it to the variable f.
+        with open("Chords.txt") as f:
+            ##It iterates through each line in the file using a for loop.
+            for line in f:
+                #Split each line into two parts: the key and the value.
+                (key, val) = line.split()
+                #Add the key-value pair to the dictionary d.
+                d[key] = val
         #Splits our value and creates an Array Chordnotes
         chordnotes = d[chord].split(',')
         return chordnotes
@@ -99,39 +125,17 @@ class chords():
 
 # displays selected chord on fretboard utilises for loops
     def chordView(self, chord):
-        clist = chord
-        #Loop over the indices of main.string1
-        for i in range(len(main.string1)):
-            # Check if the first element in clist is equal to the current index.
-            if clist[0] == str(i):
-                # If so skip
-                pass
-            # If not...
-            else:
-                # replace with a blank value
-                main.string1[i] = " "
-        for i in range(len(main.string2)):
-            if clist[1] == str(i):
-                pass
-            else:
-                main.string2[i] = " "
-        for i in range(len(main.string3)):
-            if clist[2] == str(i):
-                pass
-            else:
-                main.string3[i] = " "
-        for i in range(len(main.string4)):
-            if clist[3] == str(i):
-                pass
-            else:
-                main.string4[i] = " "
-        for i in range(len(main.string5)):
-            if clist[4] == str(i):
-                pass
-            else:
-                main.string5[i] = " "
-        for i in range(len(main.string6)):
-            if clist[5] == str(i):
-                pass
-            else:
-                main.string6[i] = " "
+        # List of all strings
+        strings = [main.string1, main.string2, main.string3, main.string4, main.string5, main.string6]
+
+        # Iterate over each string
+        for string_index, string in enumerate(strings):
+            # Loop over the indices of the current string
+            for i in range(len(string)):
+                # Check if the current element in chord is equal to the current index
+                if chord[string_index] == str(i):
+                    # If so, skip
+                    continue
+                # If not, replace with a blank value
+                else:
+                    string[i] = " "

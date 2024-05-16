@@ -21,28 +21,6 @@ class chords():
         # it will indicate that the chord does fit within the scale thus returning True
         return True
 
-    def arpeggioMaker(self, chord):
-        print(chord)
-
-        # List of all strings
-        strings = [main.string1, main.string2, main.string3, main.string4, main.string5, main.string6]
-
-        cnotes = []
-
-        # Iterate over each string
-        for string_index, string in enumerate(strings):
-            # If the note is 'x', continue to the next string
-            if chord[string_index] == 'x':
-                continue
-            # If there is a note, append the note at the index of the current element of chord in the current string to cnotes
-            else:
-                cnotes.append(string[int(chord[string_index])])
-
-        # Remove duplicates from cnotes
-        new = []
-        [new.append(x) for x in cnotes if x not in new]
-        return new
-
     def arpeggiate(self, chord):
         print(chord)
 
@@ -81,7 +59,7 @@ class chords():
         chordnotes = d[chord].split(',')
         return chordnotes
 
-    def chordDict2(self, root, type):
+    def chordId(self, root, type):
         chords = {
             "F Major": [0, 4, 7],
             "F Minor": [0, 3, 7],
@@ -106,22 +84,6 @@ class chords():
         }
 
         print(chords)
-
-    def chordmaker(self, root, type):
-        chord = str(root) + "_" + str(type)
-        d = {}
-        #opens the file "Chords.txt" using the with statement and assigns it to the variable f.
-        with open("Chords.txt") as f:
-            ##It iterates through each line in the file using a for loop.
-            for line in f:
-                #Split each line into two parts: the key and the value.
-                (key, val) = line.split()
-                #Add the key-value pair to the dictionary d.
-                d[key] = val
-        #Splits our value and creates an Array Chordnotes
-        chordnotes = d[chord].split(',')
-        return chordnotes
-
 
 # displays selected chord on fretboard utilises for loops
     def chordView(self, chord):

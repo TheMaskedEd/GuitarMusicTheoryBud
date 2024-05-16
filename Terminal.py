@@ -103,6 +103,7 @@ def terminal():
             for i in (main.string1,main.string2,main.string3,main.string4,main.string5,main.string6):
                 print(i)
 
+
         elif func == "3":
             # Get the tuning from the user
             tunning = input("Please select your tuning")

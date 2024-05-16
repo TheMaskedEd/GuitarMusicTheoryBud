@@ -81,7 +81,6 @@ class extra():
         temp = [octave[i] for i in intervals]
         return temp
 
-
     #basic dictionary with guitar terms stored on a dictionary.txt
     def jeeves(term):
         print(term)

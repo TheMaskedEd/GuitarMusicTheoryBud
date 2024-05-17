@@ -43,49 +43,44 @@ class chords():
         [new.append(x) for x in cnotes if x not in new]
         return new
 
-    # ChordDict basic chord dictionary stored on chord dictionary.txt
+    # ChordDict basic chord dictionary
     def chordDict(self, root, type):
-        chord = str(root) + "_" + str(type)
-        d = {}
-        #opens the file "Chords.txt" using the with statement and assigns it to the variable f.
-        with open("Chords.txt") as f:
-            ##It iterates through each line in the file using a for loop.
-            for line in f:
-                #Split each line into two parts: the key and the value.
-                (key, val) = line.split()
-                #Add the key-value pair to the dictionary d.
-                d[key] = val
-        #Splits our value and creates an Array Chordnotes
-        chordnotes = d[chord].split(',')
-        return chordnotes
-
-    def chordId(self, root, type):
-        chords = {
-            "F Major": [0, 4, 7],
-            "F Minor": [0, 3, 7],
-            "F Diminished": [0, 3, 6],
-            "F Augmented": [0, 4, 8],
-            "F Major 7th": [0, 4, 7, 11],
-            "F Minor 7th": [0, 3, 7, 10],
-            "F7": [0, 4, 7, 10],
-            "F Diminished 7th": [0, 3, 6, 9],
-            "F Augmented 7th": [0, 4, 8, 11],
-            "Fsus2": [0, 2, 7],
-            "Fsus4": [0, 5, 7],
-            "Fadd9": [0, 4, 7, 14],
-            "F6": [0, 4, 7, 9],
-            "Fm6": [0, 3, 7, 9],
-            "F9": [0, 4, 7, 10, 14],
-            "Fm9": [0, 3, 7, 10, 14],
-            "F11": [0, 4, 7, 10, 14, 17],
-            "Fm11": [0, 3, 7, 10, 14, 17],
-            "F13": [0, 4, 7, 10, 14, 17, 21],
-            "Fm13": [0, 3, 7, 10, 14, 17, 21]
+        # Define the intervals for each chord
+        intervals = {
+            "major": [0, 4, 7],
+            "minor": [0, 3, 7],
+            "diminished": [0, 3, 6],
+            "augmented": [0, 4, 8],
+            "major 7th": [0, 4, 7, 11],
+            "minor 7th": [0, 3, 7, 10],
+            "7": [0, 4, 7, 10],
+            "diminished 7th": [0, 3, 6, 9],
+            "augmented 7th": [0, 4, 8, 11],
+            "sus2": [0, 2, 7],
+            "sus4": [0, 5, 7],
+            "add9": [0, 4, 7, 14],
+            "6": [0, 4, 7, 9],
+            "m6": [0, 3, 7, 9],
+            "9": [0, 4, 7, 10, 14],
+            "m9": [0, 3, 7, 10, 14],
+            "11": [0, 4, 7, 10, 14, 17],
+            "m11": [0, 3, 7, 10, 14, 17],
+            "13": [0, 4, 7, 10, 14, 17, 21],
+            "m13": [0, 3, 7, 10, 14, 17, 21]
         }
 
-        print(chords)
+        # Get the intervals for the chord type
+        chord_intervals = intervals[type]
 
-# displays selected chord on fretboard utilises for loops
+        # Get the notes for the chord using the getnotes function
+        chord_notes = self.getnotes(root, type)
+
+        # Get the notes for the chord
+        chord_notes = [chord_notes[interval % len(chord_notes)] for interval in chord_intervals]
+
+        return chord_notes
+
+    # displays selected chord on fretboard utilises for loops
     def chordView(self, chord):
         # List of all strings
         strings = [main.string1, main.string2, main.string3, main.string4, main.string5, main.string6]

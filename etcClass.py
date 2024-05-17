@@ -28,40 +28,49 @@ class extra():
                 fret_index = fret_index + 1
 
     #plots the notes in a key to the fretboard
-    def setkey(self, key):
+    def setkey(self, key, fret_range, strings_to_display):
         print(key)
 
         # List of all strings
-        strings = [main.string1, main.string2, main.string3, main.string4, main.string5, main.string6]
+        strings = {
+            'E': main.string1,
+            'A': main.string2,
+            'D': main.string3,
+            'G': main.string4,
+            'B': main.string5,
+            'e': main.string6
+        }
 
         # Create a dictionary to map notes to their positions
         note_positions = {note: i + 1 for i, note in enumerate(key)}
 
         # Iterate over each string
-        for string in strings:
-            # Iterate over each note in the string
-            for i in range(len(string)):
+        for string_name, string in strings.items():
+            if string_name not in strings_to_display:
+                continue  # Skip strings not in strings_to_display
+
+            # Create a blank string for the specified fret range
+            string_range = [' '] * (fret_range[1] - fret_range[0] + 1)
+
+            # Iterate over each note in the string within the fret range
+            for i in range(fret_range[0], fret_range[1] + 1):
                 # If the note is in the key, annotate it with its position
                 if string[i] in key:
-                    string[i] = f"{string[i]}({note_positions[string[i]]})"
-                else:
-                    # If the note is not in the key, replace it with a blank space
-                    string[i] = ' '
+                    string_range[i - fret_range[0]] = f"{string[i]}({note_positions[string[i]]})"
 
-        # Print the annotated strings
-        for string in strings:
-            print(string)
+            # Print the annotated string
+            print(f"{string_name}: {string_range}")
 
     #a basic dictionary of tunings
-    def tunning(self, tunning):
-        tunnings = {
-            "standard":['E','A','D','G','B','E'],
-        }
-        #sends it over to set tunning
-        extra.setTunning(tunnings[tunning])
-        print(tunnings[tunning])
-        #returns it just incase we need to use later
-        return(tunnings[tunning])
+    def tunning(self, tuning_notes):
+        # Convert the string of notes to a list
+        tuning_notes = list(tuning_notes)
+
+        # Set the tuning
+        extra.setTunning(tuning_notes)
+
+        print(tuning_notes)
+        return tuning_notes
 
     #function that utilises intervals and octives to get notes for a scale
     def getnotes(self, key, scale):

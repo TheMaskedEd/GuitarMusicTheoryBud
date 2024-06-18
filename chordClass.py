@@ -1,12 +1,12 @@
-import main
+from main import Main
 
-class chords():
+class chords(Main):
 
     def scaleCheck(self, chord):
         clist = chord
 
         # List of all strings
-        strings = [main.string1, main.string2, main.string3, main.string4, main.string5, main.string6]
+        strings = [Main.string1, Main.string2, Main.string3, Main.string4, Main.string5, Main.string6]
 
         # Iterate over each string
         for string_index, string in enumerate(strings):
@@ -25,7 +25,7 @@ class chords():
         print(chord)
 
         # List of all strings
-        strings = [main.string1, main.string2, main.string3, main.string4, main.string5, main.string6]
+        strings = [Main.string1, Main.string2, Main.string3, Main.string4, Main.string5, Main.string6]
 
         cnotes = []
 
@@ -83,7 +83,7 @@ class chords():
     # displays selected chord on fretboard utilises for loops
     def chordView(self, chord):
         # List of all strings
-        strings = [main.string1, main.string2, main.string3, main.string4, main.string5, main.string6]
+        strings = [Main.string1, Main.string2, Main.string3, Main.string4, Main.string5, Main.string6]
 
         # Iterate over each string
         for string_index, string in enumerate(strings):

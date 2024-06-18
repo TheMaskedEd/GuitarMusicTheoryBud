@@ -1,13 +1,12 @@
-import main
-
-class extra():
+from main import Main
+class extra(Main):
 
     #Sets the tuning on the guitar by getting the first note and iterating down the note array
     def setTunning(tune):
         print(tune)
 
         # List of all strings
-        strings = [main.string1, main.string2, main.string3, main.string4, main.string5, main.string6]
+        strings = [Main.string1, Main.string2, Main.string3, Main.string4, Main.string5, Main.string6]
 
         # Iterate over each string
         for string_index, string in enumerate(strings):
@@ -19,8 +18,8 @@ class extra():
 
             # Iterate over each note in the string
             for _ in string:
-                x = main.notes.index(stringnote)
-                string[fret_index] = main.notes[note_index + x]
+                x = Main.notes.index(stringnote)
+                string[fret_index] = Main.notes[note_index + x]
                 if note_index < 11 - x:
                     note_index = note_index + 1
                 else:
@@ -33,12 +32,12 @@ class extra():
 
         # List of all strings
         strings = {
-            'E': main.string1,
-            'A': main.string2,
-            'D': main.string3,
-            'G': main.string4,
-            'B': main.string5,
-            'e': main.string6
+            'E': Main.string1,
+            'A': Main.string2,
+            'D': Main.string3,
+            'G': Main.string4,
+            'B': Main.string5,
+            'e': Main.string6
         }
 
         # Create a dictionary to map notes to their positions
@@ -74,16 +73,16 @@ class extra():
 
     #function that utilises intervals and octives to get notes for a scale
     def getnotes(self, key, scale):
-        # root is assigned the value of the index in main.notes
+        # root is assigned the value of the index in Main.notes
         # where the value of key is located.
-        root = main.notes.index(key)
+        root = Main.notes.index(key)
         # intervals is assigned the interval found within
-        # the key of the dictionary main.scales .
-        intervals = main.scales[scale]
-        # octave is assigned the value of a slice of main.notes
+        # the key of the dictionary Main.scales .
+        intervals = Main.scales[scale]
+        # octave is assigned the value of a slice of Main.notes
         # from the index root to root+13. This creates a list of
         # the 13 notes in one octave starting from root.
-        octave = main.notes[root:root+13]
+        octave = Main.notes[root:root+13]
         # A list comprehension is used to create a new list called temp by
         # iterating through each element i in intervals. For each i,
         # the corresponding element in octave is added to temp.

@@ -1,5 +1,74 @@
 class GuitarTab:
-    def __init__(self):
+    def __init__(self, composition_name):
+        super().__init__()
+        self.composition_name = composition_name
+        self.strings = ['e', 'B', 'G', 'D', 'A', 'E']
+        self.tabs = {}
+
+    def create_tab(self, tab_name, time_signature=4):
+        self.tabs[tab_name] = {
+            'time_signature': time_signature,
+            'remaining_beats': time_signature,
+            'notes': {string: [] for string in self.strings}
+        }
+
+    def edit_column(self, tab_name, column, new_notes):
+        for string, note in zip(self.strings, new_notes):
+            while len(self.tabs[tab_name]['notes'][string]) <= column:
+                self.tabs[tab_name]['notes'][string].append(None)
+            self.tabs[tab_name]['notes'][string][column] = str(note) if note is not None else note
+
+    def interval(self, tab_name, column, new_notes, note_duration):
+        self.edit_column(tab_name, column, new_notes)
+        self.tabs[tab_name]['remaining_beats'] -= note_duration
+        if self.tabs[tab_name]['remaining_beats'] == 0:
+            self.edit_column(tab_name, column + 1, ['|' for _ in self.strings])
+            self.tabs[tab_name]['remaining_beats'] = self.tabs[tab_name]['time_signature']
+
+    def modifier(self, tab_name, column, string, mod):
+        if string in self.strings and column < len(self.tabs[tab_name]['notes'][string]):
+            self.tabs[tab_name]['notes'][string][column] += mod
+
+    def remove_tab(self, tab_name):
+        del self.tabs[tab_name]
+
+    def display_tab(self, tab_name):
+        print(f"Displaying tab: {tab_name} from the composition: {self.composition_name}")
+        max_length = max(len(notes) for notes in self.tabs[tab_name]['notes'].values())
+        for string, notes in self.tabs[tab_name]['notes'].items():
+            for _ in range(max_length - len(notes)):
+                notes.append(None)
+            print(string + " | " + " ".join(note if note is not None else '-' for note in notes))
+
+
+
+
+
+#Usage
+guitar_tab = GuitarTab("mary had a little lamb")
+guitar_tab.create_tab('intro', 4)  # 4 is the time signature
+
+# Assuming each '-' or 'x' is a quarter note
+guitar_tab.interval('intro', 0, [3, 2, 0, None, None, None], 1)  # 1 is the note duration
+guitar_tab.interval('intro', 1, [None, None, None, None, None, None], 1)
+guitar_tab.interval('intro', 2, [5, 3, 0, None, None, None], 1)
+guitar_tab.interval('intro', 3, [5, 7, 0, None, None, None], 1)
+guitar_tab.interval('intro', 5, [3, 2, 0, None, None, None], 1)  # 1 is the note duration
+guitar_tab.interval('intro', 6, [None, None, None, None, None, None], 1)
+guitar_tab.interval('intro', 7, [5, 3, 0, None, None, None], 1)
+guitar_tab.interval('intro', 8, [5, 7, 0, None, None, None], 1)
+
+
+guitar_tab.modifier('intro',14,'e','')
+guitar_tab.display_tab('intro')
+
+  # Outputs: Displaying tab: intro, E | 3 -, B | 2 -, G | 0 -, D | -, A | -, E | -"
+
+
+class GuitarTb:
+    def __init__(self, composition_name):
+        super().__init__()
+        self.composition_name = composition_name
         self.strings = ['e', 'B', 'G', 'D', 'A', 'E']
         self.tabs = {}
 
@@ -20,38 +89,13 @@ class GuitarTab:
         del self.tabs[tab_name]
 
     def display_tab(self, tab_name):
-        print(f"Displaying tab: {tab_name}")
+        print(f"Displaying tab: {tab_name} from the composition: {self.composition_name}")
         max_length = max(len(notes) for notes in self.tabs[tab_name].values())
         for string, notes in self.tabs[tab_name].items():
             for _ in range(max_length - len(notes)):
                 notes.append(None)
             print(string + " | " + " ".join(note if note is not None else '-' for note in notes))
-
-
-#Usage
-guitar_tab = GuitarTab()
-guitar_tab.create_tab('intro')
-guitar_tab.edit_column('intro', 0, [3, 2, 0, None, None, None])
-guitar_tab.edit_column('intro', 1, [None, None, None, None, None, None])
-guitar_tab.edit_column('intro', 2, [5, 3, 0, None, None, None])
-guitar_tab.edit_column('intro', 3, [5, 7, 0, None, None, None])
-guitar_tab.edit_column('intro', 4, ['x', None, None, None, None, None])
-guitar_tab.edit_column('intro', 5, [3, 2, 0, None, None, None])
-guitar_tab.edit_column('intro', 6, [None, None, None, None, None, None])
-guitar_tab.edit_column('intro', 7, [5, 3, 0, None, None, None])
-guitar_tab.edit_column('intro', 8, [5, 7, 0, None, None, None])
-guitar_tab.edit_column('intro', 9, ['x', None, None, None, None, None])
-guitar_tab.edit_column('intro', 10, [3, 2, 0, None, None, None])
-guitar_tab.edit_column('intro', 11, [None, None, None, None, None, None])
-guitar_tab.edit_column('intro', 12, [5, 3, 0, None, None, None])
-guitar_tab.edit_column('intro', 13, [5, 7, 0, None, None, None])
-guitar_tab.edit_column('intro', 14, ['x', None, None, None, None, None])
-guitar_tab.edit_column('intro', 15, [3, 2, 0, None, None, None])
-guitar_tab.modifier('intro',14,'e',';')
-guitar_tab.display_tab('intro')  # Outputs: Displaying tab: intro, E | 3 -, B | 2 -, G | 0 -, D | -, A | -, E | -"
-
-
-class Tuptup:
+class timingWIP:
     @staticmethod
     def calculate_remaining_space(note_counts, tuplet_counts):
         # Durations of standard notes in beats
@@ -129,8 +173,7 @@ tuplet_counts = {
 }
 
 
-remaining = Tuptup.calculate_remaining_space(note_counts, tuplet_counts)
-print(f"Remaining space in the measure: {remaining} beats")
+
 
 
 

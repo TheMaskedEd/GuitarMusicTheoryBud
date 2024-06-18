@@ -1,5 +1,6 @@
-#Dictionary of scales and their intervals
-scales = {
+class Main:
+    def __init__(self):
+        self.scales = {
         "major": [0, 2, 4, 5, 7, 9, 11],
         "minor": [0, 2, 3, 5, 7, 8, 10],
         "harmonic minor": [0, 2, 3, 5, 7, 8, 11],
@@ -27,19 +28,14 @@ scales = {
         "slendro": [0, 2, 4, 7, 9],  # Example of a Slendro scale
         "maqam rast": [0, 2, 4, 5, 7, 9, 11],  # Similar to Major with microtonal variations
         "maqam hijaz": [0, 1, 4, 5, 7, 8, 11]  # Similar to Phrygian dominant
-}
-
-#String arrays
-string1 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
-string2 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
-string3 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
-string4 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
-string5 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
-string6 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
-#notes arrays the *2 is used speecifically for getnotes in order to stay within index
-notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B']*2
-
-
+        }
+        self.string1 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
+        self.string2 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
+        self.string3 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
+        self.string4 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
+        self.string5 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
+        self.string6 = [" "," "," "," "," "," "," "," "," "," "," "," "," "]
+        self.notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B']*2
 
 
 
